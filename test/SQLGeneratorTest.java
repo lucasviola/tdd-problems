@@ -1,4 +1,5 @@
 import jdk.nashorn.internal.ir.annotations.Ignore;
+import org.junit.Before;
 import org.junit.Test;
 import sqlGenerator.SQLGenerator;
 
@@ -8,11 +9,20 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class SQLGeneratorTest {
+    SQLGenerator generator;
+    String table;
+    ArrayList<String> columns;
+
+
+    @Before
+    public void setUp() throws Exception {
+        generator = new SQLGenerator();
+        table = "table";
+        columns = new ArrayList<String>();
+    }
 
     @Test
     public void givenTableNameShouldQueryForEverythingInTheTable() throws Exception {
-        SQLGenerator generator = new SQLGenerator();
-
         String table = "a";
         String result = generator.fromTableNameToSelectQuery(table);
 
@@ -21,9 +31,6 @@ public class SQLGeneratorTest {
 
     @Test
     public void givenAColumnAndTableShouldReturnSelectQuery() throws Exception {
-        SQLGenerator generator = new SQLGenerator();
-        String table = "table";
-        ArrayList<String> columns = new ArrayList<String>();
         columns.add("column");
 
         String result = generator.generateSelectQuery(columns, table);
@@ -33,9 +40,6 @@ public class SQLGeneratorTest {
 
     @Test
     public void givenTwoColumnsAndATableShouldReturnSelectQuery() throws Exception {
-        SQLGenerator generator = new SQLGenerator();
-        String table = "table";
-        ArrayList<String> columns = new ArrayList<String>();
         columns.add("firstColumn");
         columns.add("secondColumn");
 
@@ -46,9 +50,6 @@ public class SQLGeneratorTest {
 
     @Test
     public void givenThreeColumnsAndATableShouldReturnSelectQuery() throws Exception {
-        SQLGenerator generator = new SQLGenerator();
-        String table = "table";
-        ArrayList<String> columns = new ArrayList<String>();
         columns.add("firstColumn");
         columns.add("secondColumn");
         columns.add("thirdColumn");
@@ -61,9 +62,6 @@ public class SQLGeneratorTest {
 
     @Test
     public void givenOneColumnAndOneTableAndWhereClauseShouldReturnSelectQuery() throws Exception {
-        SQLGenerator generator = new SQLGenerator();
-        String table = "table";
-        ArrayList<String> columns = new ArrayList<String>();
         columns.add("column");
         String clause = "WHERE";
         String columnMatch = "id=1";
@@ -76,9 +74,6 @@ public class SQLGeneratorTest {
 
     @Test
     public void givenOneColumnAndOneTableAndWhereClauseAndAndClauseReturnSelectQuery() throws Exception {
-        SQLGenerator generator = new SQLGenerator();
-        String table = "table";
-        ArrayList<String> columns = new ArrayList<String>();
         columns.add("column");
         String clause = "WHERE";
         ArrayList<String> matches = new ArrayList<String>();

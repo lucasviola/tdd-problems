@@ -3,6 +3,7 @@ package sqlGenerator;
 import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SQLGenerator {
 
@@ -92,6 +93,18 @@ public class SQLGenerator {
         }
 
         query += ");";
+
+        return query;
+    }
+
+
+    public String generateUpdateQuery(String table, ArrayList<String> oldValue, ArrayList<String> newValue) {
+
+        String query = "UPDATE " + table + " SET ";
+        query += newValue.get(0) + " ";
+        query += "WHERE ";
+        query += oldValue.get(0) + ";";
+
 
         return query;
     }

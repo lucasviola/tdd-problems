@@ -3,6 +3,7 @@ import org.junit.Test;
 import sqlGenerator.SQLGenerator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
@@ -148,5 +149,17 @@ public class SQLGeneratorTest {
         String result = generator.generateInsertQuery(table, values);
 
         assertEquals("INSERT INTO table VALUES (\"!@#$%*\");", result);
+    }
+
+    @Test
+    public void givenTableAndOnePairOfColumnValueShouldUpdateTable() throws Exception {
+        ArrayList<String> newValue = new ArrayList<String>();
+        newValue.add("name=\"lucas\"");
+        ArrayList<String> oldValue = new ArrayList<String>();
+        oldValue.add("name=\"person\"");
+
+        String result = generator.generateUpdateQuery(table, oldValue, newValue);
+
+        assertEquals("UPDATE table SET name=\"lucas\" WHERE name=\"person\";", result);
     }
 }

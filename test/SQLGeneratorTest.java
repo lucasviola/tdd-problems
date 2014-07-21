@@ -1,4 +1,3 @@
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.Before;
 import org.junit.Test;
 import sqlGenerator.SQLGenerator;
@@ -12,13 +11,16 @@ public class SQLGeneratorTest {
     SQLGenerator generator;
     String table;
     ArrayList<String> columns;
-
+    ArrayList<String> columnMatch;
+    String clause;
 
     @Before
     public void setUp() throws Exception {
         generator = new SQLGenerator();
         table = "table";
+        clause = "WHERE";
         columns = new ArrayList<String>();
+        columnMatch = new ArrayList<String>();
     }
 
     @Test
@@ -63,8 +65,7 @@ public class SQLGeneratorTest {
     @Test
     public void givenOneColumnAndOneTableAndWhereClauseShouldReturnSelectQuery() throws Exception {
         columns.add("column");
-        String clause = "WHERE";
-        String columnMatch = "id=1";
+        columnMatch.add("id=1");
 
         String result = generator.generateSelectQuery(columns, table, clause, columnMatch);
 
@@ -75,12 +76,10 @@ public class SQLGeneratorTest {
     @Test
     public void givenOneColumnAndOneTableAndWhereClauseAndAndClauseReturnSelectQuery() throws Exception {
         columns.add("column");
-        String clause = "WHERE";
-        ArrayList<String> matches = new ArrayList<String>();
-        matches.add("id=1");
-        matches.add("age=20");
+        columnMatch.add("id=1");
+        columnMatch.add("age=20");
 
-        String result = generator.generateSelectQuery(columns, table, clause, matches);
+        String result = generator.generateSelectQuery(columns, table, clause, columnMatch);
 
         assertEquals("SELECT column FROM table WHERE id=1 AND age=20;", result);
 

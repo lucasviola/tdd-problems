@@ -32,7 +32,7 @@ public class SQLGenerator {
         return query;
     }
 
-    public String generateSelectQuery(ArrayList<String> columns, String table, String clause, String columnMatch ){
+    public String generateSelectQuery(ArrayList<String> columns, String table, String clause, ArrayList<String> columnMatch) {
 
         String query = "SELECT ";
 
@@ -50,35 +50,12 @@ public class SQLGenerator {
 
         query += "FROM " + table + " ";
         query += clause + " ";
-        query += columnMatch + ";";
+        query += columnMatch.get(0);
+        if(columnMatch.size() > 1){
 
-        return query;
-    }
-
-    public String generateSelectQuery(ArrayList<String> columns, String table, String clause, ArrayList<String> matches) {
-
-        String query = "SELECT ";
-
-        if(columns.isEmpty())
-            query += "*";
-        else {
-            for(int i = 0; i < columns.size(); i++){
-
-                if(i == columns.size()-1)
-                    query += columns.get(i) + " ";
-                else
-                    query += columns.get(i) + ", ";
-            }
-        }
-
-        query += "FROM " + table + " ";
-        query += clause + " ";
-        query += matches.get(0);
-        if(matches.size() > 1){
-
-            for(int i = 1; i < matches.size(); i++){
+            for(int i = 1; i < columnMatch.size(); i++){
                 query += " AND ";
-                query += matches.get(i);
+                query += columnMatch.get(i);
             }
         }
 

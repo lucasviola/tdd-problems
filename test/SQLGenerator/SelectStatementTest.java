@@ -2,16 +2,14 @@ package SQLGenerator;
 
 import org.junit.Before;
 import org.junit.Test;
-import sqlGenerator.SQLGenerator;
+import sqlGenerator.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class SelectStatementTest {
-    SQLGenerator generator;
+    SelectStatement generator;
     String table;
     ArrayList<String> columns;
     ArrayList<String> columnMatch;
@@ -19,7 +17,7 @@ public class SelectStatementTest {
 
     @Before
     public void setUp() throws Exception {
-        generator = new SQLGenerator();
+        generator = new SelectStatement();
         table = "table";
         clause = "WHERE";
         columns = new ArrayList<String>();

@@ -3,6 +3,7 @@ package SQLGenerator;
 import org.junit.Before;
 import org.junit.Test;
 import sqlGenerator.SQLGenerator;
+import sqlGenerator.UpdateStatement;
 
 import java.util.ArrayList;
 
@@ -10,14 +11,14 @@ import static org.junit.Assert.assertEquals;
 
 public class UpdateStatementTest {
 
-    SQLGenerator generator;
+    UpdateStatement generator;
     String table;
     ArrayList<String> newValue;
     ArrayList<String> oldValue;
 
     @Before
     public void setUp() throws Exception {
-        generator = new SQLGenerator();
+        generator = new UpdateStatement();
         table = "table";
         newValue = new ArrayList<String>();
         oldValue = new ArrayList<String>();

@@ -175,6 +175,22 @@ public class SQLGeneratorTest {
         String result = generator.generateUpdateQuery(table, oldValue, newValue);
 
         assertEquals("UPDATE table SET name=\"lucas\", age=24 WHERE name=\"person\", age=23;", result);
-
     }
+
+    @Test
+    public void givenTwoStringAndOneIntegerShouldUpdateTable() throws Exception {
+        ArrayList<String> newValue = new ArrayList<String>();
+        newValue.add("city=\"Porto Alegre\"");
+        newValue.add("email=\"lucas@mailto.com\"");
+        newValue.add("height=173");
+        ArrayList<String> oldValue = new ArrayList<String>();
+        oldValue.add("city=\"Curitiba\"");
+        oldValue.add("email=\"mail@mailto.com\"");
+        oldValue.add("height=175");
+
+        String result = generator.generateUpdateQuery(table, oldValue, newValue);
+
+        assertEquals("UPDATE table SET city=\"Porto Alegre\", email=\"lucas@mailto.com\", height=173 WHERE city=\"Curitiba\", email=\"mail@mailto.com\", height=175;", result);
+    }
+
 }

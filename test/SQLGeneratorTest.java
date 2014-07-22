@@ -152,7 +152,7 @@ public class SQLGeneratorTest {
     }
 
     @Test
-    public void givenTableAndOnePairOfColumnValueShouldUpdateTable() throws Exception {
+    public void givenTableColumnAndOneValueShouldUpdateTable() throws Exception {
         ArrayList<String> newValue = new ArrayList<String>();
         newValue.add("name=\"lucas\"");
         ArrayList<String> oldValue = new ArrayList<String>();
@@ -161,5 +161,20 @@ public class SQLGeneratorTest {
         String result = generator.generateUpdateQuery(table, oldValue, newValue);
 
         assertEquals("UPDATE table SET name=\"lucas\" WHERE name=\"person\";", result);
+    }
+
+    @Test
+    public void givenTableColumnAndTwoValuesShouldUpdateTable() throws Exception {
+        ArrayList<String> newValue = new ArrayList<String>();
+        newValue.add("name=\"lucas\"");
+        newValue.add("age=24");
+        ArrayList<String> oldValue = new ArrayList<String>();
+        oldValue.add("name=\"person\"");
+        oldValue.add("age=23");
+
+        String result = generator.generateUpdateQuery(table, oldValue, newValue);
+
+        assertEquals("UPDATE table SET name=\"lucas\", age=24 WHERE name=\"person\", age=23;", result);
+
     }
 }

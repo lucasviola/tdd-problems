@@ -1,3 +1,5 @@
+package SQLGenerator;
+
 import org.junit.Before;
 import org.junit.Test;
 import sqlGenerator.SQLGenerator;

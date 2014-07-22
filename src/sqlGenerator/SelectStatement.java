@@ -10,7 +10,7 @@ public class SelectStatement {
         return query;
     }
 
-    public String generateSelectQuery(ArrayList<String> columns, String table) {
+    public String generateExpression(ArrayList<String> columns, String table) {
 
         String query = "SELECT ";
         if(columns.isEmpty())
@@ -30,7 +30,7 @@ public class SelectStatement {
         return query;
     }
 
-    public String generateSelectQuery(ArrayList<String> columns, String table, String clause, ArrayList<String> columnMatch) {
+    public String generateExpression(ArrayList<String> columns, String table, String clause, ArrayList<String> columnMatch) {
 
         String query = "SELECT ";
 

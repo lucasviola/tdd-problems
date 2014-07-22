@@ -2,7 +2,6 @@ package SQLGenerator;
 
 import org.junit.Before;
 import org.junit.Test;
-import sqlGenerator.SQLGenerator;
 import sqlGenerator.UpdateStatement;
 
 import java.util.ArrayList;
@@ -18,10 +17,10 @@ public class UpdateStatementTest {
 
     @Before
     public void setUp() throws Exception {
-        generator = new UpdateStatement();
         table = "table";
         newValue = new ArrayList<String>();
         oldValue = new ArrayList<String>();
+        generator = new UpdateStatement(table, oldValue, newValue);
     }
 
     @Test
@@ -29,7 +28,7 @@ public class UpdateStatementTest {
         newValue.add("name=\"lucas\"");
         oldValue.add("name=\"person\"");
 
-        String result = generator.generateUpdateQuery(table, oldValue, newValue);
+        String result = generator.generateExpression();
 
         assertEquals("UPDATE table SET name=\"lucas\" WHERE name=\"person\";", result);
     }
@@ -41,7 +40,7 @@ public class UpdateStatementTest {
         oldValue.add("name=\"person\"");
         oldValue.add("age=23");
 
-        String result = generator.generateUpdateQuery(table, oldValue, newValue);
+        String result = generator.generateExpression();
 
         assertEquals("UPDATE table SET name=\"lucas\", age=24 WHERE name=\"person\", age=23;", result);
     }
@@ -55,7 +54,7 @@ public class UpdateStatementTest {
         oldValue.add("email=\"mail@mailto.com\"");
         oldValue.add("height=175");
 
-        String result = generator.generateUpdateQuery(table, oldValue, newValue);
+        String result = generator.generateExpression();
 
         assertEquals("UPDATE table SET city=\"Porto Alegre\", email=\"lucas@mailto.com\", height=173 WHERE city=\"Curitiba\", email=\"mail@mailto.com\", height=175;", result);
     }

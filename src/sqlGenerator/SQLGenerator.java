@@ -1,13 +1,7 @@
 package sqlGenerator;
 
-import java.util.ArrayList;
+public interface SQLGenerator {
 
-public class SQLGenerator {
-
-
-
-
-
-
+    public String generateExpression();
 
 }

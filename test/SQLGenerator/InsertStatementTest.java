@@ -3,7 +3,6 @@ package SQLGenerator;
 import org.junit.Before;
 import org.junit.Test;
 import sqlGenerator.InsertStatement;
-import sqlGenerator.SQLGenerator;
 
 import java.util.ArrayList;
 
@@ -28,7 +27,7 @@ public class InsertStatementTest {
         values.add("lucas");
         values.add("24");
 
-        String result = generator.generateInsertQuery(table, values);
+        String result = generator.generateExpression(table, values);
 
         assertEquals("INSERT INTO table VALUES (\"lucas\", 24);", result);
     }
@@ -38,7 +37,7 @@ public class InsertStatementTest {
         values.add("lucas");
         values.add("Brasil");
 
-        String result = generator.generateInsertQuery(table, values);
+        String result = generator.generateExpression(table, values);
 
         assertEquals("INSERT INTO table VALUES (\"lucas\", \"Brasil\");", result);
 
@@ -48,7 +47,7 @@ public class InsertStatementTest {
     public void givenOneSingleValueShouldInsertIntoTable() throws Exception {
         values.add("24");
 
-        String result = generator.generateInsertQuery(table, values);
+        String result = generator.generateExpression(table, values);
 
         assertEquals("INSERT INTO table VALUES (24);", result);
     }
@@ -58,7 +57,7 @@ public class InsertStatementTest {
         values.add("1");
         values.add("24");
 
-        String result = generator.generateInsertQuery(table, values);
+        String result = generator.generateExpression(table, values);
 
         assertEquals("INSERT INTO table VALUES (1, 24);", result);
     }
@@ -69,7 +68,7 @@ public class InsertStatementTest {
         values.add("mail@mailto.com");
         values.add("Brasil");
 
-        String result = generator.generateInsertQuery(table, values);
+        String result = generator.generateExpression(table, values);
 
         assertEquals("INSERT INTO table VALUES (\"lucas\", \"mail@mailto.com\", \"Brasil\");", result);
     }
@@ -78,7 +77,7 @@ public class InsertStatementTest {
     public void givenASetOfSpecialSymbolsShouldValidateAsAString() throws Exception {
         values.add("!@#$%*");
 
-        String result = generator.generateInsertQuery(table, values);
+        String result = generator.generateExpression(table, values);
 
         assertEquals("INSERT INTO table VALUES (\"!@#$%*\");", result);
     }

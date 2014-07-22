@@ -36,7 +36,7 @@ public class SelectStatementTest {
     public void givenAColumnAndTableShouldReturnSelectQuery() throws Exception {
         columns.add("column");
 
-        String result = generator.generateSelectQuery(columns, table);
+        String result = generator.generateExpression(columns, table);
 
         assertEquals("SELECT column FROM " + table + ";", result);
     }
@@ -46,7 +46,7 @@ public class SelectStatementTest {
         columns.add("firstColumn");
         columns.add("secondColumn");
 
-        String result = generator.generateSelectQuery(columns, table);
+        String result = generator.generateExpression(columns, table);
 
         assertEquals("SELECT firstColumn, secondColumn FROM table;", result);
     }
@@ -57,7 +57,7 @@ public class SelectStatementTest {
         columns.add("secondColumn");
         columns.add("thirdColumn");
 
-        String result = generator.generateSelectQuery(columns, table);
+        String result = generator.generateExpression(columns, table);
 
         assertEquals("SELECT firstColumn, secondColumn, thirdColumn FROM table;", result);
 
@@ -68,7 +68,7 @@ public class SelectStatementTest {
         columns.add("column");
         columnMatch.add("id=1");
 
-        String result = generator.generateSelectQuery(columns, table, clause, columnMatch);
+        String result = generator.generateExpression(columns, table, clause, columnMatch);
 
         assertEquals("SELECT column FROM table WHERE id=1;", result);
 
@@ -80,7 +80,7 @@ public class SelectStatementTest {
         columnMatch.add("id=1");
         columnMatch.add("age=20");
 
-        String result = generator.generateSelectQuery(columns, table, clause, columnMatch);
+        String result = generator.generateExpression(columns, table, clause, columnMatch);
 
         assertEquals("SELECT column FROM table WHERE id=1 AND age=20;", result);
     }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class InsertStatement {
 
-    public String generateInsertQuery(String table, ArrayList<String> values) {
+    public String generateExpression(String table, ArrayList<String> values) {
 
         String query = "INSERT INTO " + table + " VALUES ";
         query += "(";
@@ -33,6 +33,6 @@ public class InsertStatement {
         query += ");";
 
         return query;
-    }
+   }
 
 }

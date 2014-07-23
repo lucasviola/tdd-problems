@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 public class UpdateStatement {
 
-    String table;
-    ArrayList<String> oldValues;
-    ArrayList<String> newValues;
+    private String query;
+    private String table;
+    private ArrayList<String> oldValues;
+    private ArrayList<String> newValues;
 
     public UpdateStatement(String table, ArrayList<String> oldValues, ArrayList<String> newValues) {
         this.table = table;
@@ -14,10 +15,9 @@ public class UpdateStatement {
         this.newValues = newValues;
     }
 
+    private String addValuesToQuery(){
 
-    public String generateExpression() {
-
-        String query = "UPDATE " + table + " SET ";
+        query = "UPDATE " + table + " SET ";
 
         for(int i = 0; i < newValues.size(); i++){
 
@@ -27,6 +27,14 @@ public class UpdateStatement {
                 query += newValues.get(i) + " ";
 
         }
+
+        return query;
+    }
+
+
+    public String generateExpression() {
+
+        addValuesToQuery();
 
         query += "WHERE ";
 

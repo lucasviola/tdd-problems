@@ -20,4 +20,16 @@ public class DeleteStatementTest {
 
         assertThat(result, is("DELETE FROM table WHERE id=1;"));
     }
+
+    @Test
+    public void givenTableAndTwoValueShouldDelete() throws Exception {
+        ArrayList<String> values = new ArrayList<String>();
+        values.add("id=1");
+        values.add("name=\"lucas\"");
+        DeleteStatement generator = new DeleteStatement();
+
+        String result = generator.generate("table", values);
+
+        assertThat(result, is("DELETE FROM table WHERE id=1 AND name=\"lucas\";"));
+    }
 }

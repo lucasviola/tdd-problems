@@ -8,7 +8,19 @@ public class DeleteStatement {
         String query = "DELETE FROM ";
         query += table + " ";
         query += "WHERE ";
-        query += values.get(0) + ";";
+
+        if(values.size() <= 1)
+            query += values.get(0) + ";";
+        else{
+            for(int i = 0; i < values.size(); i++){
+                if(i == values.size()-1)
+                    query += values.get(i) + ";";
+                else {
+                    query += values.get(i) + " ";
+                    query += "AND ";
+                }
+            }
+        }
 
         return query;
     }

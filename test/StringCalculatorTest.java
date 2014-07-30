@@ -1,4 +1,5 @@
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -36,6 +37,15 @@ public class StringCalculatorTest {
         int result = calculator.add("2");
 
         assertThat(result, is(2));
+    }
+
+    @Ignore
+    @Test
+    public void givenTwoNumbersShouldReturnResult() throws Exception {
+
+        int result = calculator.add("1,2");
+
+        assertThat(result, is(3));
 
     }
 }

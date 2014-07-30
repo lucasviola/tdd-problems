@@ -1,3 +1,4 @@
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -5,9 +6,16 @@ import static org.hamcrest.CoreMatchers.*;
 
 public class StringCalculatorTest {
 
+    private StringCalculator calculator;
+
+    @Before
+    public void setUp() throws Exception {
+
+        calculator = new StringCalculator();
+    }
+
     @Test
     public void givenEmptyStringShouldReturnZero() throws Exception {
-        StringCalculator calculator = new StringCalculator();
 
         int result = calculator.add("");
 
@@ -16,7 +24,6 @@ public class StringCalculatorTest {
 
     @Test
     public void givenStringContainingOneShouldReturnOne() throws Exception {
-        StringCalculator calculator = new StringCalculator();
 
         int result = calculator.add("1");
 
@@ -25,7 +32,6 @@ public class StringCalculatorTest {
 
     @Test
     public void givenStringContainingTwoShouldReturnTwo() throws Exception {
-        StringCalculator calculator = new StringCalculator();
 
         int result = calculator.add("2");
 

@@ -39,7 +39,6 @@ public class StringCalculatorTest {
         assertThat(result, is(2));
     }
 
-    @Ignore
     @Test
     public void givenTwoNumbersShouldReturnResult() throws Exception {
 

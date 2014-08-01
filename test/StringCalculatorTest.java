@@ -53,6 +53,15 @@ public class StringCalculatorTest {
         int result = calculator.add("1,2,3");
 
         assertThat(result, is(6));
-
     }
+
+    @Test
+    public void givenStringOfNumbersContainingZeroShouldReturnResult() throws Exception {
+
+        int result = calculator.add("6,5,4,0,10");
+
+        assertThat(result, is(25));
+    }
+
+    
 }

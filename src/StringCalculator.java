@@ -7,12 +7,10 @@ public class StringCalculator {
         int result = 0;
 
         for(int i = 0; i < someName.length; i++){
-            if(someName[i].equals("1"))
-                result += 1;
-            else if(someName[i].equals("2"))
-                result += 2;
-            else if(someName[i].equals("3"))
-                result += 3;
+            if(someName[i].equals(""))
+                result = 0;
+            else
+                result += Integer.parseInt(someName[i]);
         }
 
         return result;

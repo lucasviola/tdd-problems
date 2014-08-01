@@ -45,6 +45,14 @@ public class StringCalculatorTest {
         int result = calculator.add("1,2");
 
         assertThat(result, is(3));
+    }
+
+    @Test
+    public void givenThreeNumbersShouldReturnResult() throws Exception {
+
+        int result = calculator.add("1,2,3");
+
+        assertThat(result, is(6));
 
     }
 }

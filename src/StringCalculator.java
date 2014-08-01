@@ -11,6 +11,8 @@ public class StringCalculator {
                 result += 1;
             else if(someName[i].equals("2"))
                 result += 2;
+            else if(someName[i].equals("3"))
+                result += 3;
         }
 
         return result;

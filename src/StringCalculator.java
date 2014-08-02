@@ -6,7 +6,7 @@ public class StringCalculator {
 
         String[] separatedSentence;
         String separator;
-        
+
         if(sentence.length() >= 2){
             if(sentence.charAt(1) == '\n')
                 separator = "\n";

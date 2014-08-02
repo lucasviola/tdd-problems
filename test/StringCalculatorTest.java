@@ -64,11 +64,19 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void givenTwoNumbersSeparatedByNewLine() throws Exception {
+    public void givenTwoNumbersSeparatedByNewLineShouldReturnResult() throws Exception {
 
         int result = calculator.add("1\n3");
 
         assertThat(result, is(4));
+    }
+
+    @Test
+    public void givenFiveNumbersWithTwoDifferentSeparatorsShouldReturnResult() throws Exception {
+
+        int result = calculator.add("1\n2,5,10\n9");
+
+        assertThat(result, is(27));
 
     }
 }

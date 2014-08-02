@@ -63,5 +63,12 @@ public class StringCalculatorTest {
         assertThat(result, is(25));
     }
 
-    
+    @Test
+    public void givenTwoNumbersSeparatedByNewLine() throws Exception {
+
+        int result = calculator.add("1\n3");
+
+        assertThat(result, is(4));
+
+    }
 }

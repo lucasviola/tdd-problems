@@ -78,6 +78,5 @@ public class StringCalculatorTest {
         int result = calculator.add("1\n2,5,10\n9");
 
         assertThat(result, is(27));
-
     }
 }

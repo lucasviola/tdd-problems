@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class StringCalculator {
 
-    public int add(String sentence) {
+    private String separator;
+    private String[] separatedSentence;
 
-        String[] separatedSentence;
-        String separator;
+    public int add(String sentence) {
 
         if(sentence.length() >= 2){
             if(sentence.charAt(1) == '\n')

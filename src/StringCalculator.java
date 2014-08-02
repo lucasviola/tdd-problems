@@ -3,7 +3,22 @@ import java.util.ArrayList;
 public class StringCalculator {
 
     public int add(String sentence) {
-        String[] separatedSentence = separateNumbers(sentence, ",");
+
+        String[] separatedSentence;
+        String separator;
+        
+        if(sentence.length() >= 2){
+            if(sentence.charAt(1) == '\n')
+                separator = "\n";
+            else
+                separator = ",";
+        }
+        else
+            separator = ",";
+
+
+
+        separatedSentence = separateNumbers(sentence, separator);
         int result = 0;
 
         for(int i = 0; i < separatedSentence.length; i++){

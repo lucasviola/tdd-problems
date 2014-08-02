@@ -71,6 +71,7 @@ public class StringCalculatorTest {
         assertThat(result, is(4));
     }
 
+    @Ignore
     @Test
     public void givenFiveNumbersWithTwoDifferentSeparatorsShouldReturnResult() throws Exception {
 

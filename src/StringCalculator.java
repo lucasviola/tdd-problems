@@ -24,8 +24,9 @@ public class StringCalculator {
         for(int i = 0; i < separatedSentence.length; i++){
             if(separatedSentence[i].equals(""))
                 result = 0;
-            else
+            else{
                 result += Integer.parseInt(separatedSentence[i]);
+            }
         }
 
         return result;

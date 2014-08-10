@@ -1,7 +1,16 @@
 package ticTacToe;
 
 public class Player {
-    public Player(Symbol circle) {
 
+
+    private Symbol symbol;
+
+    public Player(Symbol Symbol) {
+
+        this.symbol = Symbol;
+    }
+
+    public Symbol getSymbol() {
+        return symbol;
     }
 }

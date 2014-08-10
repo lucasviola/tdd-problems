@@ -36,12 +36,22 @@ public class TicTacToeTest {
     }
 
     @Test
-    public void firstPlayerShouldPlay() throws Exception {
+    public void firstPlayerShouldPlayCircle() throws Exception {
         newMatch.nextMove();
 
         String firstField = newMatch.getMatchMap().get("firstField");
 
         assertThat(firstField, is("circle"));
+    }
+
+    @Test
+    public void secondPlayerShouldPlayX() throws Exception {
+       newMatch.nextMove();
+       newMatch.nextMove();
+
+        String secondField = newMatch.getMatchMap().get("secondField");
+
+        assertThat(secondField, is("x"));
 
     }
 }

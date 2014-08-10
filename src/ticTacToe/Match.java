@@ -8,12 +8,14 @@ public class Match {
     private Player secondPlayer;
     private Player activePlayer;
     private HashMap<String,String> matchMap;
+    private int playCounter;
 
     public Match(Player firstPlayer, Player secondPlayer) {
 
         this.firstPlayer = firstPlayer;
         this.secondPlayer = secondPlayer;
         this.matchMap = new HashMap<String, String>();
+        this.playCounter = 0;
     }
 
     public void start() {
@@ -25,16 +27,19 @@ public class Match {
     }
 
     public void nextMove() {
+        String field = "nullable";
+        if(playCounter == 0){ field = "firstField";  }
+        else if(playCounter == 1){ field = "secondField"; }
 
         if(this.activePlayer.equals(firstPlayer)){
             this.activePlayer = secondPlayer;
-            matchMap.put("firstField", String.valueOf(secondPlayer.getSymbol()));
+            matchMap.put(field, String.valueOf(secondPlayer.getSymbol()));
         } else{
             this.activePlayer = firstPlayer;
-            matchMap.put("firstField", String.valueOf(firstPlayer.getSymbol()));
+            matchMap.put(field, String.valueOf(firstPlayer.getSymbol()));
         }
 
-
+        playCounter++;
 
     }
 

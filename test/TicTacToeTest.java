@@ -20,6 +20,5 @@ public class TicTacToeTest {
 
         assertThat(result, is(secondPlayer));
 
-
     }
 }

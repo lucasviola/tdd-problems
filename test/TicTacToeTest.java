@@ -20,5 +20,8 @@ public class TicTacToeTest {
 
         assertThat(result, is(secondPlayer));
 
+        newMatch.nextMove();
+
+        assertThat(newMatch.whosTurnIsIt(), is(firstPlayer));
     }
 }

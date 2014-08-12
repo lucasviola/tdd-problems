@@ -52,6 +52,17 @@ public class TicTacToeTest {
         String secondField = newMatch.getMatchMap().get(1);
 
         assertThat(secondField, is("x"));
+    }
+
+    @Test
+    public void shouldUpdatePlayCounter() throws Exception {
+        newMatch.nextMove();
+        newMatch.nextMove();
+        newMatch.nextMove();
+
+        int playCounter = newMatch.getPlayCounter();
+
+        assertThat(playCounter, is(3));
 
     }
 }

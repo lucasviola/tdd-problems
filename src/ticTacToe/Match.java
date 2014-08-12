@@ -27,9 +27,6 @@ public class Match {
     }
 
     public void nextMove() {
-        String field = "nullable";
-        if(playCounter == 0){ field = "firstField";  }
-        else if(playCounter == 1){ field = "secondField"; }
 
         if(this.activePlayer.equals(firstPlayer)){
             this.activePlayer = secondPlayer;
@@ -45,5 +42,9 @@ public class Match {
 
     public Player whosTurnIsIt() {
         return this.activePlayer;
+    }
+
+    public int getPlayCounter() {
+        return playCounter;
     }
 }

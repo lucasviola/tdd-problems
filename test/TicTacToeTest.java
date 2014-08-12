@@ -39,7 +39,7 @@ public class TicTacToeTest {
     public void firstPlayerShouldPlayCircle() throws Exception {
         newMatch.nextMove();
 
-        String firstField = newMatch.getMatchMap().get("firstField");
+        String firstField = newMatch.getMatchMap().get(0);
 
         assertThat(firstField, is("circle"));
     }
@@ -49,7 +49,7 @@ public class TicTacToeTest {
        newMatch.nextMove();
        newMatch.nextMove();
 
-        String secondField = newMatch.getMatchMap().get("secondField");
+        String secondField = newMatch.getMatchMap().get(1);
 
         assertThat(secondField, is("x"));
 

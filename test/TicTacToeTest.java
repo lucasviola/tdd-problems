@@ -81,8 +81,11 @@ public class TicTacToeTest {
 
         assertThat(newMatch.getPlayCounter(), is(9));
         assertThat(status, is("finished"));
+    }
 
-
+    @Test
+    public void playerShouldPickRandomField() throws Exception {
+        //TODO
 
     }
 }

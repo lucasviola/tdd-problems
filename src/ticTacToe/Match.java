@@ -9,6 +9,7 @@ public class Match {
     private Player activePlayer;
     private HashMap<Integer,String> matchMap;
     private int playCounter;
+    private String status;
 
     public Match(Player firstPlayer, Player secondPlayer) {
 
@@ -20,6 +21,7 @@ public class Match {
 
     public void start() {
         this.activePlayer = firstPlayer;
+        status = "On going";
     }
 
     public HashMap<Integer, String> getMatchMap() {
@@ -38,6 +40,10 @@ public class Match {
 
         playCounter++;
 
+        if(playCounter >= 9){
+            this.status = "finished";
+        }
+
     }
 
     public Player whosTurnIsIt() {
@@ -46,5 +52,9 @@ public class Match {
 
     public int getPlayCounter() {
         return playCounter;
+    }
+
+    public String getStatus() {
+        return status;
     }
 }

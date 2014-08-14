@@ -63,6 +63,26 @@ public class TicTacToeTest {
         int playCounter = newMatch.getPlayCounter();
 
         assertThat(playCounter, is(3));
+    }
+
+    @Test
+    public void whenMatchReachesNinePlaysShouldReturnFinished() throws Exception {
+        newMatch.nextMove();
+        newMatch.nextMove();
+        newMatch.nextMove();
+        newMatch.nextMove();
+        newMatch.nextMove();
+        newMatch.nextMove();
+        newMatch.nextMove();
+        newMatch.nextMove();
+        newMatch.nextMove();
+
+        String status = newMatch.getStatus();
+
+        assertThat(newMatch.getPlayCounter(), is(9));
+        assertThat(status, is("finished"));
+
+
 
     }
 }
